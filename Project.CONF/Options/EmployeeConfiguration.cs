@@ -1,0 +1,21 @@
+﻿using Project.ENTITIES.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project.CONF.Options
+{
+    public class EmployeeConfiguration : BaseConfiguration<Employee>
+    {
+        // Employee entity'si için veritabanı yapılandırma ayarlarını tanımlayan sınıftır. BaseConfiguration sınıfından türetilmiştir ve Employee entity'sine özel yapılandırmalarını içerir.
+
+        //Class'a ait ayarlamaları sınıf tetiklendiğinde yapılsın istediğimiz için constructor'a belirli görevler yazılır.
+        public EmployeeConfiguration()
+        {
+            //Employee ile EmployeeProfile arasında birebir bir ilişki kurar. EmployeeProfile, Employee'ya bağlı olarak, isteğe bağlı (optional) olarak tanımlanmıştır.
+            HasOptional(x => x.Profile).WithRequired(x => x.Employee);
+        }
+    }
+}
